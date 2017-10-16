@@ -5,9 +5,10 @@
  */
 package fiscsoft;
 import java.util.ArrayList;
- import java.util.LinkedList;
- import java.util.List;
+import java.util.LinkedList;
+import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import DAO.DBConnection;
 /**
  *
  * @author Leonardo
@@ -18,15 +19,9 @@ public class GerarRelatorio extends javax.swing.JFrame {
      * Creates new form GerarRelatorio
      */
     public GerarRelatorio() {
-        initComponents();
-        List<String> ls = new ArrayList<String>(); 
-        
-        ls.add("Juca Bala;11 1111-1111");
-        ls.add("Marcos Paqueta;22 2222-2222");
-        ls.add("Maria Antonieta;33 3333-3333");
-        ls.add("Antônio Conselheiro;44 4444-4444");
-        
-        comboBox_Enterprises.setModel(new DefaultComboBoxModel(ls.toArray()));
+       initComponents();        
+        DBConnection db = new DBConnection();
+        comboBox_Enterprises.setModel(new DefaultComboBoxModel(db.GetStringList("NOME","ALUNO").toArray()));
     }
 
     /**
@@ -184,7 +179,7 @@ public class GerarRelatorio extends javax.swing.JFrame {
     }//GEN-LAST:event_comboBox_EnterprisesActionPerformed
 
     private void button_GenerateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_GenerateMouseClicked
-       System.out.println("Welcome To My First Java Program ");
+       
     }//GEN-LAST:event_button_GenerateMouseClicked
 
     
