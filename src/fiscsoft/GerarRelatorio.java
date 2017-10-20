@@ -9,6 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import DAO.DBConnection;
+import DAO.ComboItem;
 /**
  *
  * @author Leonardo
@@ -21,7 +22,8 @@ public class GerarRelatorio extends javax.swing.JFrame {
     public GerarRelatorio() {
        initComponents();        
         DBConnection db = new DBConnection();
-        comboBox_Enterprises.setModel(new DefaultComboBoxModel(db.GetStringList("NOME","ALUNO").toArray()));
+        comboBox_Enterprises.addItem((new ComboItem("test string 1","test value1")));
+        comboBox_Enterprises.addItem((new ComboItem("test string 2","test value2")));
     }
 
     /**
@@ -180,6 +182,9 @@ public class GerarRelatorio extends javax.swing.JFrame {
 
     private void button_GenerateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_GenerateMouseClicked
        
+       
+        Object item = comboBox_Enterprises.getSelectedItem();
+        String value = ((ComboItem)item).getValue();
     }//GEN-LAST:event_button_GenerateMouseClicked
 
     
@@ -220,7 +225,7 @@ public class GerarRelatorio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button_Generate;
-    private javax.swing.JComboBox<String> comboBox_Enterprises;
+    private javax.swing.JComboBox<ComboItem> comboBox_Enterprises;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
