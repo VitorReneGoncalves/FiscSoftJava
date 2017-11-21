@@ -20,15 +20,16 @@ public class GerarRelatorio extends javax.swing.JFrame {
      * Creates new form GerarRelatorio
      */
     public GerarRelatorio() {
-       initComponents();        
-        DBConnection db = new DBConnection();
-        
-        List<String> empresasKey = db.GetStringList("NOME", "EMPRESAS");
-        List<String> empresasValue = db.GetStringList("ID", "EMPRESAS");
-        
+        initComponents();        
+        DBConnection db = new DBConnection();   
+        List<String> empresasKey = db.GetStringList("EMPRESA_NOME_FANTASIA", "EMPRESAS");
+        List<String> empresasValue = db.GetStringList("EMPRESA_ID", "EMPRESAS");
         for(int i =0; i < empresasValue.size(); i ++){
             comboBox_Enterprises.addItem((new ComboItem(empresasKey.get(i),empresasValue.get(i))));
         }
+        
+        
+        System.out.println(java.util.UUID.randomUUID()); //Gerar GUID
         
     }
 
